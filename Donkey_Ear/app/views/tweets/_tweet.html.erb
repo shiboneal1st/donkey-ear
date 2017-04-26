@@ -1,0 +1,13 @@
+<div id="tweet-<%= tweet.id %>" class="micropost">
+  <div class="content">
+    <div class="post-content">
+      <%= tweet.user.name %>
+      <div class="post">
+        <%= tweet.content %>
+      </div>
+    </div>
+    <div class="right-content">
+      <span><%= tweet.created_at %></span>
+    </div>
+  </div>
+</div>

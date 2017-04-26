@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#index'
+
+  unauthenticated :user do
+    root 'pages#index'
+  end
+  authenticated :user do
+    root to: "userhome#index", as: "userhome"
+  end
+
+  resources :tweets
+  resources :find_users, only: :index
+  resources :relationships, only: [:create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

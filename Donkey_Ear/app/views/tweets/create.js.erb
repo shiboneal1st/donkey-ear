@@ -1,0 +1,5 @@
+<% if @tweet.save %>
+	$("#tweet_content").val("");
+	console.log("successfully");
+	$("#feed").prepend("<%=j render @tweet %>");
+<% end %>

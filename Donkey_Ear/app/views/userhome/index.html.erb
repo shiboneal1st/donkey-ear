@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-6">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="well">
+          <%= render 'partials/new_tweet', tweet_id: nil %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="feed" class="well feed">
+        <%= render(@tweets) || "No Tweets" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-18">
+      <div id="search-bar" class="search user">
+        <%= form_tag(find_users_path, method: :get, id: "search-form") do %>
+          <%= text_field_tag('search_name', nil, placeholder: "Search User") %>
+          <%= submit_tag "Search" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
