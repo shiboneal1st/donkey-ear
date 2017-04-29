@@ -1,13 +1,42 @@
 <div id="tweet-<%= tweet.id %>" class="micropost">
   <div class="content">
+    <div class="picture-content">
+      <% if tweet.isAnonymous %>
+        <%= render 'partials/anonymous_picture', anonymous_profile: tweet.user.anonymous_profile, klass: 'picture' %>
+      <% else %>
+        <%= link_to tweet.user do %>
+          <%= render 'partials/picture', user: tweet.user, klass: 'picture' %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="post-content">
-      <%= tweet.user.name %>
+      <% if tweet.isAnonymous %>
+        <span class="name"><%= tweet.user.anonymous_profile.name %></span>
+      <% else %>
+        <%= link_to tweet.user do %>
+          <span class="name"><%= tweet.user.name %></span>
+        <% end %>
+      <% end %>
       <div class="post">
         <%= tweet.content %>
       </div>
+      <div class="media">
+        
+      </div>
     </div>
     <div class="right-content">
-      <span><%= tweet.created_at %></span>
+      <span><%= time_ago_in_words(tweet.created_at) %></span>
     </div>
+  </div>
+  <div class="actions">
+    <div class="actions-content">
+      <% if tweet.user == current_user %>
+        <%= link_to tweet_path(tweet), method: :delete, remote: true do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="reply-form">
   </div>
 </div>

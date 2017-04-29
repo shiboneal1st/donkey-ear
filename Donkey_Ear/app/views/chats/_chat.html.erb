@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-lg-2">
+    <% if chat.user1 == current_user %>
+      <%= render 'partials/picture', user: chat.user2, klass: 'picture-md' %>
+    <% else %>
+      <%= render 'partials/picture', user: chat.user1, kclass: 'picture-md' %>
+    <% end %> 
+  </div>
+  <div class="col-lg-7">
+    <% if chat.user1 == current_user %>
+      <h5><%= chat.user2.name %></h5>
+    <% else %>
+      <h5><%= chat.user1.name %></h5>
+    <% end %> 
+  </div>
+</div>
+<br>
+<br>

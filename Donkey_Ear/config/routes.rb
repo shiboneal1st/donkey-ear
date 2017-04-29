@@ -8,6 +8,15 @@ Rails.application.routes.draw do
     root to: "userhome#index", as: "userhome"
   end
 
+  resources :users, except: [:new, :create] do
+    member do 
+      get 'followers'
+      get 'following'
+    end
+  end
+
+  resources :chats
+
   resources :tweets
   resources :find_users, only: :index
   resources :relationships, only: [:create, :destroy]

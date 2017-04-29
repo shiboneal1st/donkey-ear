@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= render(@chats) || "No Chats" %>
+  </div>
+  <div class="col-lg-6">
+    <div id="content">
+      <div id="feed" class="well feed">
+        <%= render(@messages) || "No Messages" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+  </div>
+</div>

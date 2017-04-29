@@ -1,0 +1,12 @@
+<div id="message-<%= message.id %>" class="micropost">
+  <div class="content">
+    <div class="picture-content">
+      <%= render 'partials/picture', user: message.creator, klass: 'picture' %>
+    </div>
+    <div class="post-content">
+      <div class="post">
+        <%= message.content %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425201634) do
+ActiveRecord::Schema.define(version: 20170429181713) do
+
+  create_table "anonymous_profiles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "picture"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "user1_id"
+    t.integer  "user2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "chat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "creator"
+    t.integer  "receiptor"
+  end
+
+  add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170425201634) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -1,10 +1,20 @@
 <div class="row">
-  <div class="col-lg-7">
-    <h5><%= user.name %></h5>
+  <div class="col-lg-2">
+    <%= render 'partials/picture', user: user, klass: 'picture-md' %>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-6">
+    <%= link_to user_path(user) do %>
+      <h5><%= user.name %></h5>
+    <% end %>
+  </div>
+  <div class="col-lg-2">
     <div id="relation-<%= user.id %>" class="right" style="margin-top: 10px;">
       <%= render 'partials/follow', user: user %>
+    </div>
+  </div>
+  <div class="col-lg-2">
+    <div id="startchat-<%= user.id %>" class="right" style="margin-top: 10px; margin-left: 10px;">
+      <%= render 'partials/startchat', user: user %>
     </div>
   </div>
 </div>

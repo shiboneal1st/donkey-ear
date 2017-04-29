@@ -1,0 +1,5 @@
+<% if has_chat?(user) %>
+  <%= button_to "Chat", chat_path(get_chat(user)), method: :get, class: 'btn btn-success' %>
+<% else %>
+  <%= link_to "Chat", new_chat_path(:participant_id => user.id), class: 'btn btn-success' %>
+<% end %>

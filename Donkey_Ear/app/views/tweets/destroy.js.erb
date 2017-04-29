@@ -1,0 +1,4 @@
+<% if @tweet.destroy %>
+  $("#tweet-<%= @tweet_id %>").remove();
+  $("#tweets-count").html("<%= current_user.tweets.count %>");
+<% end %>

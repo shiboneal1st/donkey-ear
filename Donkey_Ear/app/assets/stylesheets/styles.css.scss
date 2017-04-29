@@ -1,3 +1,10 @@
+.static-image {
+  background-image: url("/assets/background.png");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center; 
+}
+
 body {
   background-color: #f4f4f4;
 }
@@ -52,9 +59,19 @@ body {
   }
 }
 
-.avatar-xs {
+.picture-xs {
   width: 32px;
   border-radius: 10rem;
+}
+
+.search-button {
+  height: 40px;
+  border-radius: 1rem;
+}
+
+.search-content {
+  height: 35px;
+  border-radius: 1rem;
 }
 
 ul.dropdown-menu {
@@ -83,7 +100,7 @@ ul.dropdown-menu {
   max-height: 100px;
 }
 
-.avatar-md {
+.picture-md {
   width: 50px;
   border-radius: 10rem;
 }
