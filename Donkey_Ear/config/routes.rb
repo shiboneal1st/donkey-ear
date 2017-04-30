@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :chats
+  resources :messages
 
   resources :tweets
   resources :find_users, only: :index

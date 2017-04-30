@@ -16,6 +16,10 @@
             <%= text_field_tag('search_name', nil, placeholder: "Search User", class: "search-content")  %>
             <%= submit_tag "Search", id: "search-button", class: "btn btn-primary" %>
           <% end %>
+
+          <%= link_to chats_path(), method: :get, class: "navbar-form navbar-left" do %>
+            <i class="fa fa-wechat" id="wechat-button"></i>
+          <% end %>
     
           <li>
             <a href="#", class="profile-image dropdown-toggle" data-toggle="dropdown", role="button", aria-expanded="false">

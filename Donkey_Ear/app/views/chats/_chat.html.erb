@@ -1,18 +1,20 @@
 <div class="row">
-  <div class="col-lg-2">
-    <% if chat.user1 == current_user %>
-      <%= render 'partials/picture', user: chat.user2, klass: 'picture-md' %>
-    <% else %>
-      <%= render 'partials/picture', user: chat.user1, kclass: 'picture-md' %>
-    <% end %> 
-  </div>
-  <div class="col-lg-7">
-    <% if chat.user1 == current_user %>
-      <h5><%= chat.user2.name %></h5>
-    <% else %>
-      <h5><%= chat.user1.name %></h5>
-    <% end %> 
-  </div>
+  <%= link_to chat_path(chat) do %>
+    <div class="col-lg-3">
+      <% if chat.user1 == current_user %>
+        <%= image_tag chat.user2.picture.url, class: 'picture-md' %>
+      <% else %>
+        <%= image_tag chat.user1.picture.url, class: 'picture-md' %>
+      <% end %> 
+    </div>
+    <div class="col-lg-7">
+      <% if chat.user1 == current_user %>
+        <h5><%= chat.user2.name %></h5>
+      <% else %>
+        <h5><%= chat.user1.name %></h5>
+      <% end %> 
+    </div>
+  <% end %>
 </div>
 <br>
 <br>

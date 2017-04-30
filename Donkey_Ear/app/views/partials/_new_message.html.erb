@@ -1,0 +1,12 @@
+<%= form_tag messages_path(chat_id: chat_id), multipart: true, method: :post, remote: true do %>
+  <div class="form-group">
+    <div class="col-lg-10">
+      <%= text_area_tag "message[content]", nil, class: "form-control", placeholder: "Enter Message" %>
+    </div>
+    <div class="col-lg-2">
+      <%= button_tag id: "send-message", class: "btn btn-primary pull-right" do %>
+        <%= fa_icon "paper-plane" %> Send
+      <% end %>
+    </div>
+  </div>
+<% end %>

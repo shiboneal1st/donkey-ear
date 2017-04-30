@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429181713) do
+ActiveRecord::Schema.define(version: 20170430150154) do
 
   create_table "anonymous_profiles", force: :cascade do |t|
     t.string   "name"
@@ -28,13 +28,24 @@ ActiveRecord::Schema.define(version: 20170429181713) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["tweet_id"], name: "index_comments_on_tweet_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
   create_table "messages", force: :cascade do |t|
     t.string   "content"
     t.integer  "chat_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "creator"
-    t.integer  "receiptor"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "creator_id"
+    t.integer  "receiptor_id"
   end
 
   add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"

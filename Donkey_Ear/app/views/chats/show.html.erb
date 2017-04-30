@@ -4,9 +4,12 @@
   </div>
   <div class="col-lg-6">
     <div id="content">
-      <div id="feed" class="well feed">
+      <div id="message" class="well message">
         <%= render(@messages) || "No Messages" %>
       </div>
+    </div>
+    <div id="new-message">
+      <%= render 'partials/new_message', chat_id: @chat.id%>
     </div>
   </div>
   <div class="col-lg-3">
