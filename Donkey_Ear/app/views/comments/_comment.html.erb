@@ -1,12 +1,10 @@
 <div id="comment-<%= comment.id %>" class="microcomment">
-  <div class="content">
-    <div class="comment-user-name">
-      <%= comment.user.name %>
+  <div class="comment-content">
+    <div class="comment-user-name col-lg-2">
+      <%= comment.user.name + ": "%>
     </div>
-    <div class="post-content">
-      <div class="post">
-        <%= comment.content %>
-      </div>
+    <div class="comment-text col-lg-10">
+      <%= comment.content %>
     </div>
   </div>
 </div>

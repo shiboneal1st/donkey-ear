@@ -30,6 +30,18 @@
   </div>
   <div class="actions">
     <div class="actions-content">
+      <a id="comment-btn-<%= tweet.id %>" href="#">
+        <i class="fa fa-comment"></i>
+        <script type="text/javascript">
+          $(function() {
+            $('#comment-btn-<%= tweet.id %>').click(function() {
+              $('#comments-<%=tweet.id %>').append("Comments")
+              $('#comments-<%=tweet.id %>').append("<%=j render(tweet.comments) %>");
+              $('#commenting-<%= tweet.id %>').append("<%=j render('partials/new_comment', tweet_id: tweet.id) %>");
+            });
+          });
+        </script>
+      </a>
       <% if tweet.user == current_user %>
         <%= link_to tweet_path(tweet), method: :delete, remote: true do %>
           <i class="fa fa-trash"></i>
@@ -37,10 +49,8 @@
       <% end %>
     </div>
   </div>
-  <div class="comments">
-    <%= render(tweet.comments) %>
+  <div class="comments" id="comments-<%= tweet.id %>">
   </div>
-  <div class="commenting">
-    
+  <div class="commenting" id="commenting-<%= tweet.id %>">
   </div>
 </div>

@@ -126,3 +126,20 @@ input, textarea {
 #wechat-button {
   font-size: 2.5em;
 }
+
+.comments {
+      @extend .row;
+      margin-left: 0px;
+      margin-top: 10px;
+}
+
+.commenting {
+  padding-bottom: 50px;
+}
+
+#comment-input-area {
+  padding-left: 0px;
+}
+#send-comment-button {
+  margin-top: 20px;
+}

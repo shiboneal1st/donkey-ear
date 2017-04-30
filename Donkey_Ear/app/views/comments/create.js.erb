@@ -1,0 +1,4 @@
+<% if @comment.save %>
+  $('#comment-content-<%= @comment.tweet.id %>').val("");
+  $('#comments-<%= @comment.tweet.id%>').append("<%=j render(@comment) %>");
+<% end %>

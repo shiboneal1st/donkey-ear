@@ -1,0 +1,12 @@
+<%= form_tag comments_path(tweet_id: tweet_id), multipart: true, method: :post, remote: true do %>
+  <div class="form-group">
+    <div class="col-lg-11" id="comment-input-area">
+      <%= text_area_tag "comment[content]", nil, id: "comment-content-" + tweet_id.to_s, class: "form-control", placeholder: "Enter Comment" %>
+    </div>
+    <div class="col-lg-1" id="send-comment-button">
+      <%= button_tag id: "send-comment", class: "btn btn-primary pull-right" do %>
+        <%= fa_icon "paper-plane" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

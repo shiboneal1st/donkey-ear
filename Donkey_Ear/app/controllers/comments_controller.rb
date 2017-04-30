@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
   def create
-      @comment = Comment.new(comment_params) do |comment|
-        comment.user = current_user
-        tweet = Tweet.find(params[:tweet_id])
-        comment.tweet = tweet
-      end
+    @comment = Comment.new(comment_params) do |comment|
+      comment.user = current_user
+      tweet = Tweet.find(params[:tweet_id])
+      comment.tweet = tweet
     end
     respond_to do |format|
       format.js
