@@ -16,6 +16,13 @@ class ChatsController < ApplicationController
     redirect_to chat_path(@chat)
   end
 
+  def get_messages
+    set_chat
+    @messages = @chat.messages
+    respond_to do |format|
+      format.json { render json: @messages.map{|x| x.json_api} }
+    end
+  end
 
   private
   def set_chat

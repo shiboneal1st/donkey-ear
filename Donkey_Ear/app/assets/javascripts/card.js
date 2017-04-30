@@ -1,3 +1,5 @@
 $(document).ready(function(){
-  $('#cover').backstretch($('#cover').data('cover'));
+  if ($('#cover').data('cover') != null) {
+    $('#cover').backstretch($('#cover').data('cover'));
+  }
 });

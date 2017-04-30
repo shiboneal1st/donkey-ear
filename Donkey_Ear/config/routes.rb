@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chats
+  resources :chats do
+    member do
+      get 'get_messages'
+    end
+  end
   resources :messages
   resources :comments
 

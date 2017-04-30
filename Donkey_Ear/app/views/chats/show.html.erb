@@ -15,3 +15,75 @@
   <div class="col-lg-3">
   </div>
 </div>
+
+
+<script>
+  function new_message(data) {
+    function get_pic_html() {
+      var img_url = "";
+      if (data.creator_img) {
+        img_url = data.creator_img;
+      } else {
+        img_url = '/assets/default_user.png';
+      }
+      if (data.creator_id != "<%= current_user.id%>") {
+        return "<div class = 'picture-content'>" + "<img class = 'picture' " + "src ='" + img_url  + "' alt = 'Background'>" + "</div>";
+      } else {
+        return "<div class = 'picture-content pull-right'>" + "<img class = 'picture' " + "src ='" + img_url + "' alt = 'Background'>" + "</div>";
+      }
+    }
+
+    function get_content_html() {
+      if (data.creator_id != "<%= current_user.id%>") {
+        return "<div class = 'post-content'>" + "<div class = 'post'>" + data.content + "</div>" + "</div>";
+      } else {
+        return "<div class = 'post-content' style = 'width: 90%;'>" + "<div class = 'post pull-right'>" + data.content + "</div>" + "</div>";
+      }
+    }
+
+    function get_header_html() {
+      return "<div id = 'message-" + data.id + "'" + " class='micropost'>" + 
+        "<div class = 'content'>";
+    }
+
+    function get_tail_html() {
+      return "</div>" + "</div>";
+    }
+
+    var new_message = "";
+    if (data.creator_id != "<%= current_user.id%>") {
+      new_message =  get_header_html() + get_pic_html() + get_content_html()
+         + get_tail_html();
+    } else {
+      new_message = get_header_html() + get_content_html() + get_pic_html() + get_tail_html();
+    }
+    return new_message;
+  }
+
+  const url_for_messages = "<%= get_messages_chat_path() %>";
+  function ajax_call() {
+    const url_for_messages = "<%= get_messages_chat_path() %>";
+    $.ajax({
+         method: 'GET',
+         url: url_for_messages,
+         dataType: 'json'
+      })
+         .done(function(data){
+            var html = '';
+             
+            data.forEach(function(message_new){
+               html += new_message(message_new);
+            });
+             
+            $('#message').html(html);
+         });
+  }
+
+  ajax_call();
+  $(function() {
+    const url_for_messages = "<%= get_messages_chat_path() %>";
+    setInterval(function(){
+      ajax_call();
+    }, 1 * 1000);
+  });
+</script>
