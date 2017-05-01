@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-3" id="chat-lists">
     <%= render(@chats) || "No Chats" %>
   </div>
   <div class="col-lg-6">
@@ -84,6 +84,6 @@
     const url_for_messages = "<%= get_messages_chat_path() %>";
     setInterval(function(){
       ajax_call();
-    }, 1 * 1000);
+    }, 0.1 * 1000);
   });
 </script>

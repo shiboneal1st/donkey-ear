@@ -7,7 +7,7 @@
           <%= form_for current_user do |f| %>
             <div class="form-group">
               <%= f.label :picture %><br>
-              <%= image_tag current_user.picture, style: 'width: 400px;' %><br>
+              <%= image_tag current_user.picture, style: 'width: 100px;' %><br>
               <br>
               <%= f.file_field :picture %>
             </div>

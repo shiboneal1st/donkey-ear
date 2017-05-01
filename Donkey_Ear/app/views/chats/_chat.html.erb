@@ -1,4 +1,8 @@
-<div class="row">
+<% if chat.id == @chat.id %>
+  <div class="row" id="chat" style="background-color: #F0F8FF;">
+<% else %>
+  <div class="row" id="chat">
+<% end %>
   <%= link_to chat_path(chat) do %>
     <div class="col-lg-3">
       <% if chat.user1 == current_user %>
@@ -15,6 +19,7 @@
       <% end %> 
     </div>
   <% end %>
+  </br>
+  </br>
+  </br>
 </div>
-<br>
-<br>
